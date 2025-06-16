@@ -2,15 +2,19 @@ import { useState } from "react"
 import { auth } from "../config/firebase"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import './signIn.css'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form';
 
 export const SignIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const navigate = useNavigate();
 
     const signIn = async () => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
+            navigate('/dashboard');
         } catch (e) {
             console.error(e);
         }
@@ -20,21 +24,27 @@ export const SignIn = () => {
     return (
         <>
             <div className="login">
-                <div className="title"><h1>LOGIN</h1></div>
-                <div className="username">
-                    <label htmlFor="uname"><b>Username</b></label>
-                    <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                <h1 className="text-center mb-4">Login</h1>
+                <Form>
+                    <Form.Group className="mb-3 text-start" controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 text-start" controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                    </Form.Group>
+                </Form>
+
+                <div className="d-flex justify-content-between">
+                    <Button variant="outline-dark" onClick={signIn}>Sign In</Button>
+                    <Link to='/register'>
+                        <Button variant="outline-dark">
+                            Register
+                        </Button>
+                    </Link>
                 </div>
-                <div className="password">
-                    <label htmlFor="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-                </div>
-                <button onClick={signIn}>Sign In</button>
-                <Link to='/register'>
-                    <button>
-                        Register
-                    </button>
-                </Link>
             </div>
         </>
     )
