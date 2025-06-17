@@ -102,8 +102,8 @@ const Records = () => {
                     <Row key={record.id} className="record-box mb-2">
                         <Col>
                             <p><strong>{record.doctorName}</strong></p>
-                            <p>Symptoms:{record.symptoms}</p>
-                            <p>Medication:{record.medication}</p>
+                            <p>Symptoms: {record.symptoms}</p>
+                            <p>Medication: {record.medication}</p>
                         </Col>
                     </Row>
                 ))}

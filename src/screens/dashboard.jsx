@@ -96,8 +96,8 @@ const Dashboard = () => {
                         type="text" placeholder="Enter patient name"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
+                        className="me-3"
                         />
-                        <Button>Search</Button>
                     </Container>
                 </Form.Group>
 

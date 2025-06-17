@@ -11,6 +11,7 @@ input[type=email], input[type=password] {
   box-sizing: border-box;
   background-color: white;
   color: black;
+  border-radius: 8px;
 }
 
 body {
@@ -27,6 +28,4 @@ body {
     background-repeat: no-repeat;
     margin: 0;
 }
-
-
 
