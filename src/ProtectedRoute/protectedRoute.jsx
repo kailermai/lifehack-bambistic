@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 import { auth } from "../config/firebase"
 
 const ProtectedRoute = ({ children }) => {

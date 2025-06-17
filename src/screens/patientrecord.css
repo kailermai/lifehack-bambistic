@@ -1,0 +1,26 @@
+.health-card-container {
+  background-image: url('/path/to/your/background-image.png'); /* optional */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  margin-top:30px;
+}
+
+.info-box {
+  background-color: #d8eafe; /* light blue */
+  border: 1px solid #000;
+  padding: 10px;
+  font-size: 16px;
+  
+}
+
+.record-box {
+  background-color: #b3e5fc; /* lighter blue */
+  border: 1px solid #000;
+  padding: 10px;
+}
+
+.add-button {
+  font-weight: bold;
+  font-size: 18px;
+}

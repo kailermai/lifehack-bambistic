@@ -5,6 +5,7 @@ import { Register } from './screens/register';
 import Home from './screens/home';
 import Dashboard from './screens/dashboard';
 import ProtectedRoute from './ProtectedRoute/protectedRoute';
+import Records from './screens/patientrecord';
 
 
 function App() {
@@ -19,7 +20,13 @@ function App() {
             <Dashboard />
           </ProtectedRoute>
         } />
+        <Route path='/patientrecord/:currentPatient' element={
+          <ProtectedRoute>
+            <Records />
+          </ProtectedRoute>
+        } />
       </Routes>
+
     </BrowserRouter>
   );
 }

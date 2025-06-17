@@ -3,12 +3,15 @@ import { auth } from "../config/firebase"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import './signIn.css'
 import { Link, useNavigate } from "react-router-dom"
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form';
+import Form from 'react-bootstrap/Form'
+import { Modal, Button } from 'react-bootstrap'
+import { getFriendlyErrorMessage } from '../constants/constants'
 
 export const SignIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [showFailure, setShowFailure] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
 
     const signIn = async () => {
@@ -16,10 +19,15 @@ export const SignIn = () => {
             await signInWithEmailAndPassword(auth, email, password);
             navigate('/dashboard');
         } catch (e) {
-            console.error(e);
+            setErrorMessage(getFriendlyErrorMessage(e));
+            setShowFailure(true);
         }
     }
 
+    const handleCloseFailure = () => {
+        setErrorMessage("");
+        setShowFailure(false);
+    }
 
     return (
         <>
@@ -46,6 +54,20 @@ export const SignIn = () => {
                     </Link>
                 </div>
             </div>
+
+            <Modal show={showFailure} onHide={handleCloseFailure}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Sign in unsuccesful!</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <p>{errorMessage}</p>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleCloseFailure}>Ok</Button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }
