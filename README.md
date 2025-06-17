@@ -3,13 +3,13 @@
  - Download Node.js(https://nodejs.org/en)
  - Ensure Git is installed
  - Clone the repository by typing
-   (git clone https://github.com/kailiermai/lifehack-bambistic.git)
- - cd lifehack-bambistic
- - install npm (run "npm install")
+   ```git clone git@github.com:kailermai/lifehack-bambistic.git```
+ - ```cd lifehack-bambistic```
+ - run ```npm install```
 
 ## Using the Website
 
- - Run "npm run dev" in the terminal and click the URL which will bring you to the  website page
+ - Run ```npm run dev``` in the terminal and click the URL which will bring you to the  website page
  - To register a new account enter a valid email and password
   (Email: example@gmail.com. Password must be at least 6 characters)
   - Sign in with either the newly register account or the dummy account
